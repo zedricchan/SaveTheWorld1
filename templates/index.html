@@ -1,19 +1,28 @@
 <!DOCTYPE html>
+
 <html>
 <head>
     <title>Zedric's grocery List</title>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}"/>
 </head>
 <body>
-    <h1>Zedric's grocery List</h1>
-    <form method="post">
-        <label for="item">Item:</label>
-        <input type="text" id="item" name="item">
-        <input type="submit" value="Add">
+    <h1>Grocery List</h1>
+    <form action="/add" method="POST">
+        <input type="text" name="item">
+        <button type="submit">Add Item</button>
     </form>
+  <hr>
+    <form action="/remove" method="POST">
+        <input type="text" name="item">
+        <button type="submit">Remove Item</button>
+    </form>
+  <hr>
+
     <ul>
-        {% for item in grocery_list %}
-            <li>{{ item }}</li>
+        {% for i in grocery_list %}
+        <li>{{ i }}</li>
         {% endfor %}
     </ul>
+  <h5>"It takes five minutes to consume 500 calories. It takes two hours to burn them off."</h5>
 </body>
 </html>
